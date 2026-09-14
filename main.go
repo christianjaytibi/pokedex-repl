@@ -1,9 +1,14 @@
 package main
 
+import (
+	"github.com/christianjaytibi/pokedex-repl/internal/commands"
+	"github.com/christianjaytibi/pokedex-repl/internal/repl"
+)
+
 func main() {
-	cfg := &config{
-		commandRegistry: getCommands(),
+	cfg := &commands.Config{
+		CommandRegistry: commands.GetCommands(),
 	}
 
-	startRepl(cfg)
+	repl.Start(cfg)
 }

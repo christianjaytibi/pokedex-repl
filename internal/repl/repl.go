@@ -1,17 +1,15 @@
-package main
+package repl
 
 import (
 	"bufio"
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/christianjaytibi/pokedex-repl/internal/commands"
 )
 
-type config struct {
-	commandRegistry map[string]command
-}
-
-func startRepl(cfg *config) {
+func Start(cfg *commands.Config) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -29,8 +27,8 @@ func startRepl(cfg *config) {
 
 		commandName := words[0]
 
-		if cmd, exists := cfg.commandRegistry[commandName]; exists {
-			err := cmd.callback(cfg)
+		if cmd, exists := cfg.CommandRegistry[commandName]; exists {
+			err := cmd.Callback(cfg)
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -43,25 +41,4 @@ func startRepl(cfg *config) {
 func cleanInput(text string) []string {
 	lowered := strings.ToLower(text)
 	return strings.Fields(lowered)
-}
-
-type command struct {
-	name        string
-	description string
-	callback    func(*config) error
-}
-
-func getCommands() map[string]command {
-	return map[string]command{
-		"exit": {
-			name:        "exit",
-			description: "Exit the Pokedex.",
-			callback:    commandExit,
-		},
-		"help": {
-			name:        "help",
-			description: "Displays a help message.",
-			callback:    commandHelp,
-		},
-	}
 }
