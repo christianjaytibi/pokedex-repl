@@ -28,6 +28,7 @@ func Start(cfg *commands.Config) {
 		commandName := words[0]
 
 		if cmd, exists := cfg.CommandRegistry[commandName]; exists {
+			cfg.CurrentCommand = commandName
 			err := cmd.Callback(cfg)
 			if err != nil {
 				fmt.Println(err)

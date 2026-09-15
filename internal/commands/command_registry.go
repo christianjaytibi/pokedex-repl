@@ -1,5 +1,7 @@
 package commands
 
+import "github.com/christianjaytibi/pokedex-repl/internal/pokeapi"
+
 type Command struct {
 	Name        string
 	Description string
@@ -7,7 +9,11 @@ type Command struct {
 }
 
 type Config struct {
-	CommandRegistry map[string]Command
+	PokeApiClient        pokeapi.Client
+	CommandRegistry      map[string]Command
+	CurrentCommand       string
+	NextLocationsURL     *string
+	PreviousLocationsURL *string
 }
 
 func GetCommands() map[string]Command {
@@ -21,6 +27,16 @@ func GetCommands() map[string]Command {
 			Name:        "help",
 			Description: "Displays a help message.",
 			Callback:    commandHelp,
+		},
+		"map": {
+			Name:        "map",
+			Description: "Displays names of 20 location areas in the Pokemon world.",
+			Callback:    commandMap,
+		},
+		"mapb": {
+			Name:        "mapb",
+			Description: "Displays the previous 20 locations.",
+			Callback:    commandMap,
 		},
 	}
 }
