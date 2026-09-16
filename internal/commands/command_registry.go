@@ -11,7 +11,6 @@ type Command struct {
 type Config struct {
 	PokeApiClient        pokeapi.Client
 	CommandRegistry      map[string]Command
-	CurrentCommand       string
 	NextLocationsURL     *string
 	PreviousLocationsURL *string
 }
@@ -31,12 +30,12 @@ func GetCommands() map[string]Command {
 		"map": {
 			Name:        "map",
 			Description: "Displays names of 20 location areas in the Pokemon world.",
-			Callback:    commandMap,
+			Callback:    commandMapForward,
 		},
 		"mapb": {
 			Name:        "mapb",
 			Description: "Displays the previous 20 locations.",
-			Callback:    commandMap,
+			Callback:    commandMapBack,
 		},
 		"explore": {
 			Name:        "explore",
