@@ -11,6 +11,7 @@ type Command struct {
 type Config struct {
 	PokeApiClient        pokeapi.Client
 	CommandRegistry      map[string]Command
+	CaughtPokemon        map[string]pokeapi.Pokemon
 	NextLocationsURL     *string
 	PreviousLocationsURL *string
 }
@@ -19,7 +20,7 @@ func GetCommands() map[string]Command {
 	return map[string]Command{
 		"exit": {
 			Name:        "exit",
-			Description: "Exit the Pokedex.",
+			Description: "Exit the Pokédex.",
 			Callback:    commandExit,
 		},
 		"help": {
@@ -29,7 +30,7 @@ func GetCommands() map[string]Command {
 		},
 		"map": {
 			Name:        "map",
-			Description: "Displays names of 20 location areas in the Pokemon world.",
+			Description: "Displays names of 20 location areas in the Pokémon world.",
 			Callback:    commandMapForward,
 		},
 		"mapb": {
@@ -41,6 +42,11 @@ func GetCommands() map[string]Command {
 			Name:        "explore",
 			Description: "Lists all Pokémon encountered within a specific location area.",
 			Callback:    commandExplore,
+		},
+		"inspect": {
+			Name:        "inspect",
+			Description: "Displays details (height, weight, stats, types) for any Pokémon you have successfully caught.",
+			Callback:    commandInspect,
 		},
 	}
 }

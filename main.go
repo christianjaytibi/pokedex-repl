@@ -15,6 +15,7 @@ func main() {
 
 	cfg := &commands.Config{
 		CommandRegistry: commands.GetCommands(),
+		CaughtPokemon:   make(map[string]pokeapi.Pokemon),
 		PokeApiClient:   pokeClient,
 	}
 
