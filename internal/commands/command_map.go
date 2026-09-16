@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func commandMap(cfg *Config) error {
+func commandMap(cfg *Config, args ...string) error {
 	url := cfg.NextLocationsURL
 	if cfg.CurrentCommand == "mapb" {
 		if cfg.PreviousLocationsURL == nil {

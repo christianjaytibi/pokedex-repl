@@ -5,7 +5,7 @@ import "github.com/christianjaytibi/pokedex-repl/internal/pokeapi"
 type Command struct {
 	Name        string
 	Description string
-	Callback    func(*Config) error
+	Callback    func(*Config, ...string) error
 }
 
 type Config struct {
@@ -37,6 +37,11 @@ func GetCommands() map[string]Command {
 			Name:        "mapb",
 			Description: "Displays the previous 20 locations.",
 			Callback:    commandMap,
+		},
+		"explore": {
+			Name:        "explore",
+			Description: "Lists all Pokémon encountered within a specific location area.",
+			Callback:    commandExplore,
 		},
 	}
 }
