@@ -48,5 +48,10 @@ func GetCommands() map[string]Command {
 			Description: "Displays details (height, weight, stats, types) for any Pokémon you have successfully caught.",
 			Callback:    commandInspect,
 		},
+		"catch": {
+			Name:        "catch",
+			Description: "Attempts to catch a Pokémon based on its base experience level, adding it to your Pokedex on success.",
+			Callback:    commandCatch,
+		},
 	}
 }
