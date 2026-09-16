@@ -9,7 +9,9 @@ import (
 )
 
 func main() {
-	pokeClient := pokeapi.NewClient(5 * time.Second)
+	clientTimeout := time.Second * 5
+	cacheInterval := time.Minute * 5
+	pokeClient := pokeapi.NewClient(clientTimeout, cacheInterval)
 
 	cfg := &commands.Config{
 		CommandRegistry: commands.GetCommands(),
