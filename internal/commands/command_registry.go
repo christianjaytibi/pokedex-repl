@@ -39,19 +39,24 @@ func GetCommands() map[string]Command {
 			Callback:    commandMapBack,
 		},
 		"explore": {
-			Name:        "explore",
+			Name:        "explore <location-name>",
 			Description: "Lists all Pokémon encountered within a specific location area.",
 			Callback:    commandExplore,
 		},
 		"inspect": {
-			Name:        "inspect",
+			Name:        "inspect <pokemon-name>",
 			Description: "Displays details (height, weight, stats, types) for any Pokémon you have successfully caught.",
 			Callback:    commandInspect,
 		},
 		"catch": {
-			Name:        "catch",
+			Name:        "catch <pokemon-name>",
 			Description: "Attempts to catch a Pokémon based on its base experience level, adding it to your Pokedex on success.",
 			Callback:    commandCatch,
+		},
+		"pokedex": {
+			Name:        "pokedex",
+			Description: "Lists the names of all Pokémon currently stored in your personal collection.",
+			Callback:    commandPokedex,
 		},
 	}
 }
