@@ -43,8 +43,8 @@ The CLI exposes a custom interactive REPL prompt supporting the following comman
 ## Catch Rate Formula
 
 $$
-P = \text{Catch Probability (\%)} =
-\max\left(5, \min\left(95, 105 - \frac{\text{Base EXP}}{3}\right)\right)
+P = \text{Catch Probability (\\%)} =
+\max\left(5, \min\left(95, \left(105 - \frac{\text{Base EXP}}{3}\right)\right)\right)
 $$
 
 ### Decision Rule
